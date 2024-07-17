@@ -1,0 +1,26 @@
+entity Rating {
+    fullName String
+    wpm Double
+    type String
+    accuracy Integer
+    rating Double
+    atTime LocalDate
+}
+
+entity Text {
+    name String unique
+    text String maxlength(2500)
+    type String
+}
+
+
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+
+service all with serviceImpl except Rating, Text
+paginate Rating, Text with pagination
+
+filter Rating
+
+search Rating with elasticsearch
